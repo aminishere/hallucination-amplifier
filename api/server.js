@@ -1,11 +1,15 @@
 import express from "express";
 import crypto from "crypto";
 import dotenv from "dotenv";
+import cors from "cors";
 
 dotenv.config();
 
 const app = express();
 app.use(express.json({ limit: "200kb" }));
+
+app.use(cors({ origin: true }));
+
 
 const INFERENCE_URL =  process.env.INFERENCE_URL || "http://127.0.0.1:8000/internal/improve-prompt";
 
